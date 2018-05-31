@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <title>Zadanie rekrutacyjne</title>
+</head>
+<body>
+    <header>
+        <img src="/icon%20-%20pracownicy.svg" alt="workers-logo" class="workers-logo">
+        <h1>Lista Pracowników</h1>
+    </header>
+    <div id="vue-app">
+        <table class="rwd-table">
+            <tr class="titles">
+                <th @click="directionSortingFlipper('id')" class="sort-by">iD</th>
+                <th @click="directionSortingFlipper('firstName')" class="sort-by">First Name</th>
+                <th @click="directionSortingFlipper('lastName')" class="sort-by">Last Name</th>
+                <th @click="directionSortingFlipper('dateOfBirth')" class="sort-by">Birth date</th>
+                <th @click="directionSortingFlipper('company')" class="sort-by">Company</th>
+                <th @click="directionSortingFlipper('note')" class="sort-by">Note</th>
+            </tr>
+
+            <tr v-for="item in sortingByColumn">
+                <td title="iD" class="styling-top"><strong>{{item.id}}</strong></td>
+                <td title="First Name">{{item.firstName}}</td>
+                <td title="Last Name"><strong>{{item.lastName}}</strong></td>
+                <td title="Birth Date">{{dateChange(item)}}</td>
+                <td title="Company"><strong>{{item.company}}</strong></td>
+                <td title="Note" class="styling-bottom">{{item.note}}</td>
+            </tr>
+        </table>
+
+        <div class="pagination">
+            <a @click="prevPage">
+                < back</a>
+                    <a @click="setPage(1)">1</a>
+                    <a @click="setPage(2)">2</a>
+                    <a @click="nextPage">next ></a>
+        </div>
+    </div>
+
+    <footer class="logo-chilid">
+        <img src="/chilid-logo.svg" alt="chilid-logo" class="logo">
+    </footer>
+    <script src="app.js"></script>
+    
+</body>
+
+</html>
